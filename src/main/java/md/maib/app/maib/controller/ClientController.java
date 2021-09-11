@@ -20,9 +20,6 @@ public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
 
-    @Modifying
-    @Query(value = "exec CheckSciot",nativeQuery = true)
-
     @GetMapping("/client")
     public List<Client> getAllClients() {
         return clientRepository.findAll();
