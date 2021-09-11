@@ -51,7 +51,7 @@ public class Client {
         this.balance = balance;
     }
 
-    @Column(name = "Currnecy", nullable = false)
+    @Column(name = "Currency", nullable = false)
     public String getCurrency() {
         return currency;
     }
