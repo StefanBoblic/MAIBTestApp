@@ -1,5 +1,9 @@
 package md.maib.app.maib.entity;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.models.auth.In;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -14,11 +18,14 @@ public class Client {
     private String currency;
     private Date last_oper_time;
 
+    // for deserialisation
     public Client() {
-
     }
 
-    public Client(int id, int number, int balance, String currency, Date last_oper_time) {
+    @JsonCreator
+    public Client(@JsonProperty("id") int id,@JsonProperty("number")int number,
+                  @JsonProperty("balance") int balance,@JsonProperty("currency") String currency,
+                  @JsonProperty("last_oper_time") Date last_oper_time) {
         this.id = id;
         this.number = number;
         this.balance = balance;
@@ -42,11 +49,11 @@ public class Client {
     public void setNumber(int number) {
         this.number = number;
     }
+
     @Column(name = "Balance", nullable = false)
     public int getBalance() {
         return balance;
     }
-
     public void setBalance(int balance) {
         this.balance = balance;
     }
@@ -55,7 +62,6 @@ public class Client {
     public String getCurrency() {
         return currency;
     }
-
     public void setCurrency(String currency) {
         this.currency = currency;
     }
@@ -64,7 +70,6 @@ public class Client {
     public Date getLast_oper_time() {
         return last_oper_time;
     }
-
     public void setLast_oper_time(Date last_oper_time) {
         this.last_oper_time = last_oper_time;
     }

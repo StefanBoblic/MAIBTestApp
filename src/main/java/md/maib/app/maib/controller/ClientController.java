@@ -26,9 +26,9 @@ public class ClientController {
     }
 
     @GetMapping("/client/{id}")
-    public ResponseEntity<Client> getClientByID(@PathVariable(value = "id") Long clientID)
+    public ResponseEntity<Client> getClientByID(@PathVariable(value = "id") Integer clientID)
             throws ResourceNotFoundException {
-        Client client = clientRepository.findById(clientID)
+        Client client = clientRepository.findById((clientID))
                 .orElseThrow(() -> new ResourceNotFoundException("Client not found for this id :: " + clientID));
         return ResponseEntity.ok().body(client);
     }
@@ -39,9 +39,9 @@ public class ClientController {
     }
 
     @PutMapping("/Client/{id}")
-    public ResponseEntity<Client> updateClient(@PathVariable(value = "id") Long clientID,
+    public ResponseEntity<Client> updateClient(@PathVariable(value = "id") Integer clientID,
                                                    @Valid @RequestBody Client clientDetails) throws ResourceNotFoundException {
-        Client client = clientRepository.findById(clientID)
+        Client client = clientRepository.findById((clientID))
                 .orElseThrow(() -> new ResourceNotFoundException("Client not found for this id :: " + clientID));
 
         client.setNumber(clientDetails.getNumber());
@@ -53,9 +53,9 @@ public class ClientController {
     }
 
     @DeleteMapping("/Client/{id}")
-    public Map<String, Boolean> deleteClient(@PathVariable(value = "id") Long clientID)
+    public Map<String, Boolean> deleteClient(@PathVariable(value = "id") Integer clientID)
             throws ResourceNotFoundException {
-        Client client = clientRepository.findById(clientID)
+        Client client = clientRepository.findById((clientID))
                 .orElseThrow(() -> new ResourceNotFoundException("Client not found for this id :: " + clientID));
 
         clientRepository.delete(client);
