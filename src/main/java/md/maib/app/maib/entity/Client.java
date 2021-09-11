@@ -68,4 +68,10 @@ public class Client {
     public void setLast_oper_time(Date last_oper_time) {
         this.last_oper_time = last_oper_time;
     }
+
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", number=" + number + ", balance=" + balance + ", currency=" + currency + ", last_operation_time=" + last_oper_time
+                + "]";
+    }
 }
