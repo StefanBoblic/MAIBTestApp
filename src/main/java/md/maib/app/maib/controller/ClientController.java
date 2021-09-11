@@ -1,8 +1,8 @@
 package md.maib.app.maib.controller;
 
 import md.maib.app.maib.entity.Client;
+import md.maib.app.maib.exception.ResourceNotFoundException;
 import md.maib.app.maib.repository.ClientRepository;
-import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
