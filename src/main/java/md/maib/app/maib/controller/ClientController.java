@@ -4,8 +4,6 @@ import md.maib.app.maib.entity.Client;
 import md.maib.app.maib.exception.ResourceNotFoundException;
 import md.maib.app.maib.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

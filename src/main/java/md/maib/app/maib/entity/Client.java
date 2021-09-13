@@ -2,7 +2,6 @@ package md.maib.app.maib.entity;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.models.auth.In;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,8 +12,8 @@ import java.util.Date;
 public class Client {
 
     private int id;
-    private int number;
-    private int balance;
+    private String number;
+    private double balance;
     private String currency;
     private Date last_oper_time;
 
@@ -23,8 +22,8 @@ public class Client {
     }
 
     @JsonCreator
-    public Client(@JsonProperty("id") int id,@JsonProperty("number")int number,
-                  @JsonProperty("balance") int balance,@JsonProperty("currency") String currency,
+    public Client(@JsonProperty("id") int id,@JsonProperty("number")String number,
+                  @JsonProperty("balance") double balance,@JsonProperty("currency") String currency,
                   @JsonProperty("last_oper_time") Date last_oper_time) {
         this.id = id;
         this.number = number;
@@ -43,18 +42,18 @@ public class Client {
     }
 
     @Column(name = "Number", nullable = false)
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
     @Column(name = "Balance", nullable = false)
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -66,7 +65,7 @@ public class Client {
         this.currency = currency;
     }
 
-    @Column(name = "LastOperationTime", nullable = false)
+    @Column(name = "Last_Operation_Time", nullable = false)
     public Date getLast_oper_time() {
         return last_oper_time;
     }
