@@ -23,6 +23,11 @@ public class ClientController {
         return clientRepository.findAll();
     }
 
+    @GetMapping("/client/procedure")
+    public List<Client> checkSciot(@RequestParam("number") String model) {
+        return clientRepository.CheckSciot(model);
+    }
+
     @GetMapping("/client/{id}")
     public ResponseEntity<Client> getClientByID(@PathVariable(value = "id") Integer clientID)
             throws ResourceNotFoundException {
@@ -61,4 +66,5 @@ public class ClientController {
         response.put("deleted", Boolean.TRUE);
         return response;
     }
+
 }
