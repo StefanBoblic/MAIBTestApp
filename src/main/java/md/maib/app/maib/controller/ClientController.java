@@ -1,8 +1,11 @@
 package md.maib.app.maib.controller;
 
+import md.maib.app.maib.dto.ClientDto;
 import md.maib.app.maib.entity.Client;
 import md.maib.app.maib.exception.ResourceNotFoundException;
 import md.maib.app.maib.repository.ClientRepository;
+import md.maib.app.maib.service.MapService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,15 +20,25 @@ import java.util.Map;
 public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
+    @Autowired
+    private MapService mapService;
+
 
     @GetMapping("/client")
     public List<Client> getAllClients() {
         return clientRepository.findAll();
     }
 
-    @GetMapping("/client/procedure")
-    public List<Client> checkSciot(@RequestParam("number") String model) {
-        return clientRepository.CheckSciot(model);
+   // @GetMapping("/client/procedure")
+    //public List<Client> checkSciot(Client client) {
+     //   return clientRepository.CheckSciot();
+    //}
+
+    @GetMapping("/clientDTO")
+    @ResponseBody
+    public List<ClientDto> getAllUsers() {
+        List <ClientDto> clientDto = mapService.getAllUsers();
+            return clientDto;
     }
 
     @GetMapping("/client/{id}")

@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.io.Serializable;
+
+import java.sql.Date;
 
 
 @Entity
 @Table(name = "Sciot")
-public class Client {
+public class Client implements Serializable {
 
     private int id;
     private String number;
@@ -33,7 +35,6 @@ public class Client {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId() {
         return id;
     }
