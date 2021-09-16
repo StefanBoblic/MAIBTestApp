@@ -4,6 +4,7 @@ import md.maib.app.maib.dto.ClientDto;
 import md.maib.app.maib.entity.Client;
 import md.maib.app.maib.exception.ResourceNotFoundException;
 import md.maib.app.maib.repository.ClientRepository;
+import md.maib.app.maib.repository.ClientRepositoryDB;
 import md.maib.app.maib.service.MapService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,18 @@ public class ClientController {
     private ClientRepository clientRepository;
     @Autowired
     private MapService mapService;
-
+    @Autowired
+    private ClientRepositoryDB clientRepositoryDB;
 
     @GetMapping("/client")
     public List<Client> getAllClients() {
         return clientRepository.findAll();
     }
 
-   // @GetMapping("/client/procedure")
-    //public List<Client> checkSciot(Client client) {
-     //   return clientRepository.CheckSciot();
-    //}
+    @GetMapping("/client/procedure")
+    public List<Client> checkSciot() {
+        return clientRepositoryDB.CheckSciot();
+    }
 
     @GetMapping("/clientDTO")
     @ResponseBody
