@@ -6,7 +6,6 @@ import md.maib.app.maib.exception.ResourceNotFoundException;
 import md.maib.app.maib.repository.ClientRepository;
 import md.maib.app.maib.repository.ClientRepositoryDB;
 import md.maib.app.maib.service.MapService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +31,7 @@ public class ClientController {
     }
 
     @GetMapping("/client/procedure")
-    public List<Client> checkSciot() {
+    public List<ClientDto> checkSciot() {
         return clientRepositoryDB.CheckSciot();
     }
 
